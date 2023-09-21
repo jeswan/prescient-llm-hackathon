@@ -1,0 +1,617 @@
+Exception in thread Thread-1 (target_fn):
+Traceback (most recent call last):
+  File "/Users/isaacsoh/miniconda3/envs/hackathon/lib/python3.10/threading.py", line 1016, in _bootstrap_inner
+    self.run()
+  File "/Users/isaacsoh/miniconda3/envs/hackathon/lib/python3.10/threading.py", line 953, in run
+    self._target(*self._args, **self._kwargs)
+  File "/Users/isaacsoh/miniconda3/envs/hackathon/lib/python3.10/site-packages/lightning/app/utilities/app_helpers.py", line 239, in target_fn
+    asyncio.run(update_fn())
+  File "/Users/isaacsoh/miniconda3/envs/hackathon/lib/python3.10/asyncio/runners.py", line 44, in run
+    return loop.run_until_complete(main)
+  File "/Users/isaacsoh/miniconda3/envs/hackathon/lib/python3.10/asyncio/base_events.py", line 649, in run_until_complete
+    return future.result()
+  File "/Users/isaacsoh/miniconda3/envs/hackathon/lib/python3.10/site-packages/lightning/app/utilities/app_helpers.py", line 215, in update_fn
+    sessions = list(runtime_instance._session_info_by_id.values())
+AttributeError: 'Runtime' object has no attribute '_session_info_by_id'
+Exception in thread Thread-2 (target_fn):
+Traceback (most recent call last):
+  File "/Users/isaacsoh/miniconda3/envs/hackathon/lib/python3.10/threading.py", line 1016, in _bootstrap_inner
+    self.run()
+  File "/Users/isaacsoh/miniconda3/envs/hackathon/lib/python3.10/threading.py", line 953, in run
+    self._target(*self._args, **self._kwargs)
+  File "/Users/isaacsoh/miniconda3/envs/hackathon/lib/python3.10/site-packages/lightning/app/utilities/app_helpers.py", line 239, in target_fn
+    asyncio.run(update_fn())
+  File "/Users/isaacsoh/miniconda3/envs/hackathon/lib/python3.10/asyncio/runners.py", line 44, in run
+    return loop.run_until_complete(main)
+  File "/Users/isaacsoh/miniconda3/envs/hackathon/lib/python3.10/asyncio/base_events.py", line 649, in run_until_complete
+    return future.result()
+  File "/Users/isaacsoh/miniconda3/envs/hackathon/lib/python3.10/site-packages/lightning/app/utilities/app_helpers.py", line 215, in update_fn
+    sessions = list(runtime_instance._session_info_by_id.values())
+AttributeError: 'Runtime' object has no attribute '_session_info_by_id'
+Exception in thread Thread-3 (target_fn):
+Traceback (most recent call last):
+  File "/Users/isaacsoh/miniconda3/envs/hackathon/lib/python3.10/threading.py", line 1016, in _bootstrap_inner
+    self.run()
+  File "/Users/isaacsoh/miniconda3/envs/hackathon/lib/python3.10/threading.py", line 953, in run
+    self._target(*self._args, **self._kwargs)
+  File "/Users/isaacsoh/miniconda3/envs/hackathon/lib/python3.10/site-packages/lightning/app/utilities/app_helpers.py", line 239, in target_fn
+    asyncio.run(update_fn())
+  File "/Users/isaacsoh/miniconda3/envs/hackathon/lib/python3.10/asyncio/runners.py", line 44, in run
+    return loop.run_until_complete(main)
+  File "/Users/isaacsoh/miniconda3/envs/hackathon/lib/python3.10/asyncio/base_events.py", line 649, in run_until_complete
+    return future.result()
+  File "/Users/isaacsoh/miniconda3/envs/hackathon/lib/python3.10/site-packages/lightning/app/utilities/app_helpers.py", line 215, in update_fn
+    sessions = list(runtime_instance._session_info_by_id.values())
+AttributeError: 'Runtime' object has no attribute '_session_info_by_id'
+2023-09-21 15:07:23.671 Uncaught app exception
+Traceback (most recent call last):
+  File "/Users/isaacsoh/miniconda3/envs/hackathon/lib/python3.10/pydoc.py", line 410, in importfile
+    return importlib._bootstrap._load(spec)
+  File "<frozen importlib._bootstrap>", line 719, in _load
+  File "<frozen importlib._bootstrap>", line 688, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 883, in exec_module
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "/Users/isaacsoh/com/github/jeswan/prescient-llm-hackathon/app.py", line 31, in <module>
+    app = L.LightningApp(LitApp())
+  File "/Users/isaacsoh/miniconda3/envs/hackathon/lib/python3.10/site-packages/lightning/app/core/app.py", line 155, in __init__
+    self._update_layout()
+  File "/Users/isaacsoh/miniconda3/envs/hackathon/lib/python3.10/site-packages/lightning/app/core/app.py", line 535, in _update_layout
+    layout = _collect_layout(self, component)
+  File "/Users/isaacsoh/miniconda3/envs/hackathon/lib/python3.10/site-packages/lightning/app/utilities/layout.py", line 65, in _collect_layout
+    layout = _collect_content_layout(layout, app, flow)
+  File "/Users/isaacsoh/miniconda3/envs/hackathon/lib/python3.10/site-packages/lightning/app/utilities/layout.py", line 102, in _collect_content_layout
+    raise ValueError(
+ValueError: A dictionary returned by `LitApp.configure_layout()` is missing a key 'content'. For the value, choose either a reference to a child flow or a URla.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/isaacsoh/miniconda3/envs/hackathon/lib/python3.10/site-packages/streamlit/runtime/scriptrunner/script_runner.py", line 541, in _run_script
+    exec(code, module.__dict__)
+  File "/Users/isaacsoh/miniconda3/envs/hackathon/lib/python3.10/site-packages/lightning/app/frontend/streamlit_base.py", line 49, in <module>
+    _main()
+  File "/Users/isaacsoh/miniconda3/envs/hackathon/lib/python3.10/site-packages/lightning/app/frontend/streamlit_base.py", line 44, in _main
+    render_fn = _get_render_fn_from_environment()
+  File "/Users/isaacsoh/miniconda3/envs/hackathon/lib/python3.10/site-packages/lightning/app/frontend/streamlit_base.py", line 31, in _get_render_fn_from_environment
+    module = pydoc.importfile(render_fn_module_file)
+  File "/Users/isaacsoh/miniconda3/envs/hackathon/lib/python3.10/pydoc.py", line 412, in importfile
+    raise ErrorDuringImport(path, sys.exc_info())
+pydoc.ErrorDuringImport: problem in /Users/isaacsoh/com/github/jeswan/prescient-llm-hackathon/app.py - ValueError: A dictionary returned by `LitApp.configure_layout()` is missing a key 'content'. For the value, choose either a reference to a child flow or a URla.
+Exception in thread Thread-4 (target_fn):
+Traceback (most recent call last):
+  File "/Users/isaacsoh/miniconda3/envs/hackathon/lib/python3.10/threading.py", line 1016, in _bootstrap_inner
+    self.run()
+  File "/Users/isaacsoh/miniconda3/envs/hackathon/lib/python3.10/threading.py", line 953, in run
+    self._target(*self._args, **self._kwargs)
+  File "/Users/isaacsoh/miniconda3/envs/hackathon/lib/python3.10/site-packages/lightning/app/utilities/app_helpers.py", line 239, in target_fn
+    asyncio.run(update_fn())
+  File "/Users/isaacsoh/miniconda3/envs/hackathon/lib/python3.10/asyncio/runners.py", line 44, in run
+    return loop.run_until_complete(main)
+  File "/Users/isaacsoh/miniconda3/envs/hackathon/lib/python3.10/asyncio/base_events.py", line 649, in run_until_complete
+    return future.result()
+  File "/Users/isaacsoh/miniconda3/envs/hackathon/lib/python3.10/site-packages/lightning/app/utilities/app_helpers.py", line 215, in update_fn
+    sessions = list(runtime_instance._session_info_by_id.values())
+AttributeError: 'Runtime' object has no attribute '_session_info_by_id'
+2023-09-21 15:08:07.186 Uncaught app exception
+Traceback (most recent call last):
+  File "/Users/isaacsoh/miniconda3/envs/hackathon/lib/python3.10/pydoc.py", line 410, in importfile
+    return importlib._bootstrap._load(spec)
+  File "<frozen importlib._bootstrap>", line 719, in _load
+  File "<frozen importlib._bootstrap>", line 688, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 883, in exec_module
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "/Users/isaacsoh/com/github/jeswan/prescient-llm-hackathon/app.py", line 33, in <module>
+    app = L.LightningApp(LitApp())
+  File "/Users/isaacsoh/miniconda3/envs/hackathon/lib/python3.10/site-packages/lightning/app/core/app.py", line 155, in __init__
+    self._update_layout()
+  File "/Users/isaacsoh/miniconda3/envs/hackathon/lib/python3.10/site-packages/lightning/app/core/app.py", line 535, in _update_layout
+    layout = _collect_layout(self, component)
+  File "/Users/isaacsoh/miniconda3/envs/hackathon/lib/python3.10/site-packages/lightning/app/utilities/layout.py", line 65, in _collect_layout
+    layout = _collect_content_layout(layout, app, flow)
+  File "/Users/isaacsoh/miniconda3/envs/hackathon/lib/python3.10/site-packages/lightning/app/utilities/layout.py", line 176, in _collect_content_layout
+    raise ValueError(m)
+ValueError: 
+            A dictionary returned by `LitApp.configure_layout()` contains an unsupported entry.
+
+            {'content': {'body': 'LLM Hacakathon'}}
+
+            Set the `content` key to a child flow or a URL, for example:
+
+            class LitApp(LightningFlow):
+                def configure_layout(self):
+                    return {'content': childFlow OR childWork OR 'http://some/url'}
+            
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/isaacsoh/miniconda3/envs/hackathon/lib/python3.10/site-packages/streamlit/runtime/scriptrunner/script_runner.py", line 541, in _run_script
+    exec(code, module.__dict__)
+  File "/Users/isaacsoh/miniconda3/envs/hackathon/lib/python3.10/site-packages/lightning/app/frontend/streamlit_base.py", line 49, in <module>
+    _main()
+  File "/Users/isaacsoh/miniconda3/envs/hackathon/lib/python3.10/site-packages/lightning/app/frontend/streamlit_base.py", line 44, in _main
+    render_fn = _get_render_fn_from_environment()
+  File "/Users/isaacsoh/miniconda3/envs/hackathon/lib/python3.10/site-packages/lightning/app/frontend/streamlit_base.py", line 31, in _get_render_fn_from_environment
+    module = pydoc.importfile(render_fn_module_file)
+  File "/Users/isaacsoh/miniconda3/envs/hackathon/lib/python3.10/pydoc.py", line 412, in importfile
+    raise ErrorDuringImport(path, sys.exc_info())
+pydoc.ErrorDuringImport: problem in /Users/isaacsoh/com/github/jeswan/prescient-llm-hackathon/app.py - ValueError: 
+            A dictionary returned by `LitApp.configure_layout()` contains an unsupported entry.
+
+            {'content': {'body': 'LLM Hacakathon'}}
+
+            Set the `content` key to a child flow or a URL, for example:
+
+            class LitApp(LightningFlow):
+                def configure_layout(self):
+                    return {'content': childFlow OR childWork OR 'http://some/url'}
+            
+Exception in thread Thread-5 (target_fn):
+Traceback (most recent call last):
+  File "/Users/isaacsoh/miniconda3/envs/hackathon/lib/python3.10/threading.py", line 1016, in _bootstrap_inner
+    self.run()
+  File "/Users/isaacsoh/miniconda3/envs/hackathon/lib/python3.10/threading.py", line 953, in run
+    self._target(*self._args, **self._kwargs)
+  File "/Users/isaacsoh/miniconda3/envs/hackathon/lib/python3.10/site-packages/lightning/app/utilities/app_helpers.py", line 239, in target_fn
+    asyncio.run(update_fn())
+  File "/Users/isaacsoh/miniconda3/envs/hackathon/lib/python3.10/asyncio/runners.py", line 44, in run
+    return loop.run_until_complete(main)
+  File "/Users/isaacsoh/miniconda3/envs/hackathon/lib/python3.10/asyncio/base_events.py", line 649, in run_until_complete
+    return future.result()
+  File "/Users/isaacsoh/miniconda3/envs/hackathon/lib/python3.10/site-packages/lightning/app/utilities/app_helpers.py", line 215, in update_fn
+    sessions = list(runtime_instance._session_info_by_id.values())
+AttributeError: 'Runtime' object has no attribute '_session_info_by_id'
+Exception in thread Thread-6 (target_fn):
+Traceback (most recent call last):
+  File "/Users/isaacsoh/miniconda3/envs/hackathon/lib/python3.10/threading.py", line 1016, in _bootstrap_inner
+    self.run()
+  File "/Users/isaacsoh/miniconda3/envs/hackathon/lib/python3.10/threading.py", line 953, in run
+    self._target(*self._args, **self._kwargs)
+  File "/Users/isaacsoh/miniconda3/envs/hackathon/lib/python3.10/site-packages/lightning/app/utilities/app_helpers.py", line 239, in target_fn
+    asyncio.run(update_fn())
+  File "/Users/isaacsoh/miniconda3/envs/hackathon/lib/python3.10/asyncio/runners.py", line 44, in run
+    return loop.run_until_complete(main)
+  File "/Users/isaacsoh/miniconda3/envs/hackathon/lib/python3.10/asyncio/base_events.py", line 649, in run_until_complete
+    return future.result()
+  File "/Users/isaacsoh/miniconda3/envs/hackathon/lib/python3.10/site-packages/lightning/app/utilities/app_helpers.py", line 215, in update_fn
+    sessions = list(runtime_instance._session_info_by_id.values())
+AttributeError: 'Runtime' object has no attribute '_session_info_by_id'
+Exception in thread Thread-7 (target_fn):
+Traceback (most recent call last):
+  File "/Users/isaacsoh/miniconda3/envs/hackathon/lib/python3.10/threading.py", line 1016, in _bootstrap_inner
+    self.run()
+  File "/Users/isaacsoh/miniconda3/envs/hackathon/lib/python3.10/threading.py", line 953, in run
+    self._target(*self._args, **self._kwargs)
+  File "/Users/isaacsoh/miniconda3/envs/hackathon/lib/python3.10/site-packages/lightning/app/utilities/app_helpers.py", line 239, in target_fn
+    asyncio.run(update_fn())
+  File "/Users/isaacsoh/miniconda3/envs/hackathon/lib/python3.10/asyncio/runners.py", line 44, in run
+    return loop.run_until_complete(main)
+  File "/Users/isaacsoh/miniconda3/envs/hackathon/lib/python3.10/asyncio/base_events.py", line 649, in run_until_complete
+    return future.result()
+  File "/Users/isaacsoh/miniconda3/envs/hackathon/lib/python3.10/site-packages/lightning/app/utilities/app_helpers.py", line 215, in update_fn
+    sessions = list(runtime_instance._session_info_by_id.values())
+AttributeError: 'Runtime' object has no attribute '_session_info_by_id'
+Exception in thread Thread-8 (target_fn):
+Traceback (most recent call last):
+  File "/Users/isaacsoh/miniconda3/envs/hackathon/lib/python3.10/threading.py", line 1016, in _bootstrap_inner
+    self.run()
+  File "/Users/isaacsoh/miniconda3/envs/hackathon/lib/python3.10/threading.py", line 953, in run
+    self._target(*self._args, **self._kwargs)
+  File "/Users/isaacsoh/miniconda3/envs/hackathon/lib/python3.10/site-packages/lightning/app/utilities/app_helpers.py", line 239, in target_fn
+    asyncio.run(update_fn())
+  File "/Users/isaacsoh/miniconda3/envs/hackathon/lib/python3.10/asyncio/runners.py", line 44, in run
+    return loop.run_until_complete(main)
+  File "/Users/isaacsoh/miniconda3/envs/hackathon/lib/python3.10/asyncio/base_events.py", line 649, in run_until_complete
+    return future.result()
+  File "/Users/isaacsoh/miniconda3/envs/hackathon/lib/python3.10/site-packages/lightning/app/utilities/app_helpers.py", line 215, in update_fn
+    sessions = list(runtime_instance._session_info_by_id.values())
+AttributeError: 'Runtime' object has no attribute '_session_info_by_id'
+Exception in thread Thread-9 (target_fn):
+Traceback (most recent call last):
+  File "/Users/isaacsoh/miniconda3/envs/hackathon/lib/python3.10/threading.py", line 1016, in _bootstrap_inner
+    self.run()
+  File "/Users/isaacsoh/miniconda3/envs/hackathon/lib/python3.10/threading.py", line 953, in run
+    self._target(*self._args, **self._kwargs)
+  File "/Users/isaacsoh/miniconda3/envs/hackathon/lib/python3.10/site-packages/lightning/app/utilities/app_helpers.py", line 239, in target_fn
+    asyncio.run(update_fn())
+  File "/Users/isaacsoh/miniconda3/envs/hackathon/lib/python3.10/asyncio/runners.py", line 44, in run
+    return loop.run_until_complete(main)
+  File "/Users/isaacsoh/miniconda3/envs/hackathon/lib/python3.10/asyncio/base_events.py", line 649, in run_until_complete
+    return future.result()
+  File "/Users/isaacsoh/miniconda3/envs/hackathon/lib/python3.10/site-packages/lightning/app/utilities/app_helpers.py", line 215, in update_fn
+    sessions = list(runtime_instance._session_info_by_id.values())
+AttributeError: 'Runtime' object has no attribute '_session_info_by_id'
+2023-09-21 15:22:24.920 Uncaught app exception
+Traceback (most recent call last):
+  File "/Users/isaacsoh/miniconda3/envs/hackathon/lib/python3.10/site-packages/streamlit/runtime/scriptrunner/script_runner.py", line 541, in _run_script
+    exec(code, module.__dict__)
+  File "/Users/isaacsoh/miniconda3/envs/hackathon/lib/python3.10/site-packages/lightning/app/frontend/streamlit_base.py", line 49, in <module>
+    _main()
+  File "/Users/isaacsoh/miniconda3/envs/hackathon/lib/python3.10/site-packages/lightning/app/frontend/streamlit_base.py", line 45, in _main
+    render_fn(flow_state)
+  File "/Users/isaacsoh/com/github/jeswan/prescient-llm-hackathon/app.py", line 12, in your_streamlit_app
+    st.file_uploader()
+  File "/Users/isaacsoh/miniconda3/envs/hackathon/lib/python3.10/site-packages/streamlit/runtime/metrics_util.py", line 367, in wrapped_func
+    result = non_optional_func(*args, **kwargs)
+TypeError: FileUploaderMixin.file_uploader() missing 1 required positional argument: 'label'
+Exception in thread Thread-10 (target_fn):
+Traceback (most recent call last):
+  File "/Users/isaacsoh/miniconda3/envs/hackathon/lib/python3.10/threading.py", line 1016, in _bootstrap_inner
+    self.run()
+  File "/Users/isaacsoh/miniconda3/envs/hackathon/lib/python3.10/threading.py", line 953, in run
+    self._target(*self._args, **self._kwargs)
+  File "/Users/isaacsoh/miniconda3/envs/hackathon/lib/python3.10/site-packages/lightning/app/utilities/app_helpers.py", line 239, in target_fn
+    asyncio.run(update_fn())
+  File "/Users/isaacsoh/miniconda3/envs/hackathon/lib/python3.10/asyncio/runners.py", line 44, in run
+    return loop.run_until_complete(main)
+  File "/Users/isaacsoh/miniconda3/envs/hackathon/lib/python3.10/asyncio/base_events.py", line 649, in run_until_complete
+    return future.result()
+  File "/Users/isaacsoh/miniconda3/envs/hackathon/lib/python3.10/site-packages/lightning/app/utilities/app_helpers.py", line 215, in update_fn
+    sessions = list(runtime_instance._session_info_by_id.values())
+AttributeError: 'Runtime' object has no attribute '_session_info_by_id'
+Exception in thread Thread-11 (target_fn):
+Traceback (most recent call last):
+  File "/Users/isaacsoh/miniconda3/envs/hackathon/lib/python3.10/threading.py", line 1016, in _bootstrap_inner
+    self.run()
+  File "/Users/isaacsoh/miniconda3/envs/hackathon/lib/python3.10/threading.py", line 953, in run
+    self._target(*self._args, **self._kwargs)
+  File "/Users/isaacsoh/miniconda3/envs/hackathon/lib/python3.10/site-packages/lightning/app/utilities/app_helpers.py", line 239, in target_fn
+    asyncio.run(update_fn())
+  File "/Users/isaacsoh/miniconda3/envs/hackathon/lib/python3.10/asyncio/runners.py", line 44, in run
+    return loop.run_until_complete(main)
+  File "/Users/isaacsoh/miniconda3/envs/hackathon/lib/python3.10/asyncio/base_events.py", line 649, in run_until_complete
+    return future.result()
+  File "/Users/isaacsoh/miniconda3/envs/hackathon/lib/python3.10/site-packages/lightning/app/utilities/app_helpers.py", line 215, in update_fn
+    sessions = list(runtime_instance._session_info_by_id.values())
+AttributeError: 'Runtime' object has no attribute '_session_info_by_id'
+2023-09-21 15:39:26.524 Uncaught app exception
+Traceback (most recent call last):
+  File "/Users/isaacsoh/miniconda3/envs/hackathon/lib/python3.10/site-packages/streamlit/runtime/scriptrunner/script_runner.py", line 537, in _run_script
+    self._session_state.on_script_will_rerun(rerun_data.widget_states)
+  File "/Users/isaacsoh/miniconda3/envs/hackathon/lib/python3.10/site-packages/streamlit/runtime/state/safe_session_state.py", line 68, in on_script_will_rerun
+    self._state.on_script_will_rerun(latest_widget_states)
+  File "/Users/isaacsoh/miniconda3/envs/hackathon/lib/python3.10/site-packages/streamlit/runtime/state/session_state.py", line 500, in on_script_will_rerun
+    self._call_callbacks()
+  File "/Users/isaacsoh/miniconda3/envs/hackathon/lib/python3.10/site-packages/streamlit/runtime/state/session_state.py", line 513, in _call_callbacks
+    self._new_widget_state.call_callback(wid)
+  File "/Users/isaacsoh/miniconda3/envs/hackathon/lib/python3.10/site-packages/streamlit/runtime/state/session_state.py", line 260, in call_callback
+    callback(*args, **kwargs)
+TypeError: on_upload() missing 1 required positional argument: 'file'
+Exception in thread Thread-12 (target_fn):
+Traceback (most recent call last):
+  File "/Users/isaacsoh/miniconda3/envs/hackathon/lib/python3.10/threading.py", line 1016, in _bootstrap_inner
+    self.run()
+  File "/Users/isaacsoh/miniconda3/envs/hackathon/lib/python3.10/threading.py", line 953, in run
+    self._target(*self._args, **self._kwargs)
+  File "/Users/isaacsoh/miniconda3/envs/hackathon/lib/python3.10/site-packages/lightning/app/utilities/app_helpers.py", line 239, in target_fn
+    asyncio.run(update_fn())
+  File "/Users/isaacsoh/miniconda3/envs/hackathon/lib/python3.10/asyncio/runners.py", line 44, in run
+    return loop.run_until_complete(main)
+  File "/Users/isaacsoh/miniconda3/envs/hackathon/lib/python3.10/asyncio/base_events.py", line 649, in run_until_complete
+    return future.result()
+  File "/Users/isaacsoh/miniconda3/envs/hackathon/lib/python3.10/site-packages/lightning/app/utilities/app_helpers.py", line 215, in update_fn
+    sessions = list(runtime_instance._session_info_by_id.values())
+AttributeError: 'Runtime' object has no attribute '_session_info_by_id'
+Exception in thread Thread-13 (target_fn):
+Traceback (most recent call last):
+  File "/Users/isaacsoh/miniconda3/envs/hackathon/lib/python3.10/threading.py", line 1016, in _bootstrap_inner
+    self.run()
+  File "/Users/isaacsoh/miniconda3/envs/hackathon/lib/python3.10/threading.py", line 953, in run
+    self._target(*self._args, **self._kwargs)
+  File "/Users/isaacsoh/miniconda3/envs/hackathon/lib/python3.10/site-packages/lightning/app/utilities/app_helpers.py", line 239, in target_fn
+    asyncio.run(update_fn())
+  File "/Users/isaacsoh/miniconda3/envs/hackathon/lib/python3.10/asyncio/runners.py", line 44, in run
+    return loop.run_until_complete(main)
+  File "/Users/isaacsoh/miniconda3/envs/hackathon/lib/python3.10/asyncio/base_events.py", line 649, in run_until_complete
+    return future.result()
+  File "/Users/isaacsoh/miniconda3/envs/hackathon/lib/python3.10/site-packages/lightning/app/utilities/app_helpers.py", line 215, in update_fn
+    sessions = list(runtime_instance._session_info_by_id.values())
+AttributeError: 'Runtime' object has no attribute '_session_info_by_id'
+Exception in thread Thread-14 (target_fn):
+Traceback (most recent call last):
+  File "/Users/isaacsoh/miniconda3/envs/hackathon/lib/python3.10/threading.py", line 1016, in _bootstrap_inner
+    self.run()
+  File "/Users/isaacsoh/miniconda3/envs/hackathon/lib/python3.10/threading.py", line 953, in run
+    self._target(*self._args, **self._kwargs)
+  File "/Users/isaacsoh/miniconda3/envs/hackathon/lib/python3.10/site-packages/lightning/app/utilities/app_helpers.py", line 239, in target_fn
+    asyncio.run(update_fn())
+  File "/Users/isaacsoh/miniconda3/envs/hackathon/lib/python3.10/asyncio/runners.py", line 44, in run
+    return loop.run_until_complete(main)
+  File "/Users/isaacsoh/miniconda3/envs/hackathon/lib/python3.10/asyncio/base_events.py", line 649, in run_until_complete
+    return future.result()
+  File "/Users/isaacsoh/miniconda3/envs/hackathon/lib/python3.10/site-packages/lightning/app/utilities/app_helpers.py", line 215, in update_fn
+    sessions = list(runtime_instance._session_info_by_id.values())
+AttributeError: 'Runtime' object has no attribute '_session_info_by_id'
+Exception in thread Thread-15 (target_fn):
+Traceback (most recent call last):
+  File "/Users/isaacsoh/miniconda3/envs/hackathon/lib/python3.10/threading.py", line 1016, in _bootstrap_inner
+    self.run()
+  File "/Users/isaacsoh/miniconda3/envs/hackathon/lib/python3.10/threading.py", line 953, in run
+    self._target(*self._args, **self._kwargs)
+  File "/Users/isaacsoh/miniconda3/envs/hackathon/lib/python3.10/site-packages/lightning/app/utilities/app_helpers.py", line 239, in target_fn
+    asyncio.run(update_fn())
+  File "/Users/isaacsoh/miniconda3/envs/hackathon/lib/python3.10/asyncio/runners.py", line 44, in run
+    return loop.run_until_complete(main)
+  File "/Users/isaacsoh/miniconda3/envs/hackathon/lib/python3.10/asyncio/base_events.py", line 649, in run_until_complete
+    return future.result()
+  File "/Users/isaacsoh/miniconda3/envs/hackathon/lib/python3.10/site-packages/lightning/app/utilities/app_helpers.py", line 215, in update_fn
+    sessions = list(runtime_instance._session_info_by_id.values())
+AttributeError: 'Runtime' object has no attribute '_session_info_by_id'
+2023-09-21 15:57:24.222 Uncaught app exception
+Traceback (most recent call last):
+  File "/Users/isaacsoh/miniconda3/envs/hackathon/lib/python3.10/site-packages/streamlit/runtime/scriptrunner/script_runner.py", line 541, in _run_script
+    exec(code, module.__dict__)
+  File "/Users/isaacsoh/miniconda3/envs/hackathon/lib/python3.10/site-packages/lightning/app/frontend/streamlit_base.py", line 49, in <module>
+    _main()
+  File "/Users/isaacsoh/miniconda3/envs/hackathon/lib/python3.10/site-packages/lightning/app/frontend/streamlit_base.py", line 45, in _main
+    render_fn(flow_state)
+  File "/Users/isaacsoh/com/github/jeswan/prescient-llm-hackathon/app.py", line 23, in your_streamlit_app
+    on_click=on_predict(uploaded_file)
+  File "/Users/isaacsoh/com/github/jeswan/prescient-llm-hackathon/app.py", line 30, in on_predict
+    bytes_data = file.getvalue()
+AttributeError: 'NoneType' object has no attribute 'getvalue'
+Exception in thread Thread-16 (target_fn):
+Traceback (most recent call last):
+  File "/Users/isaacsoh/miniconda3/envs/hackathon/lib/python3.10/threading.py", line 1016, in _bootstrap_inner
+    self.run()
+  File "/Users/isaacsoh/miniconda3/envs/hackathon/lib/python3.10/threading.py", line 953, in run
+    self._target(*self._args, **self._kwargs)
+  File "/Users/isaacsoh/miniconda3/envs/hackathon/lib/python3.10/site-packages/lightning/app/utilities/app_helpers.py", line 239, in target_fn
+    asyncio.run(update_fn())
+  File "/Users/isaacsoh/miniconda3/envs/hackathon/lib/python3.10/asyncio/runners.py", line 44, in run
+    return loop.run_until_complete(main)
+  File "/Users/isaacsoh/miniconda3/envs/hackathon/lib/python3.10/asyncio/base_events.py", line 649, in run_until_complete
+    return future.result()
+  File "/Users/isaacsoh/miniconda3/envs/hackathon/lib/python3.10/site-packages/lightning/app/utilities/app_helpers.py", line 215, in update_fn
+    sessions = list(runtime_instance._session_info_by_id.values())
+AttributeError: 'Runtime' object has no attribute '_session_info_by_id'
+2023-09-21 15:58:17.300 Uncaught app exception
+Traceback (most recent call last):
+  File "/Users/isaacsoh/miniconda3/envs/hackathon/lib/python3.10/site-packages/streamlit/runtime/scriptrunner/script_runner.py", line 537, in _run_script
+    self._session_state.on_script_will_rerun(rerun_data.widget_states)
+  File "/Users/isaacsoh/miniconda3/envs/hackathon/lib/python3.10/site-packages/streamlit/runtime/state/safe_session_state.py", line 68, in on_script_will_rerun
+    self._state.on_script_will_rerun(latest_widget_states)
+  File "/Users/isaacsoh/miniconda3/envs/hackathon/lib/python3.10/site-packages/streamlit/runtime/state/session_state.py", line 500, in on_script_will_rerun
+    self._call_callbacks()
+  File "/Users/isaacsoh/miniconda3/envs/hackathon/lib/python3.10/site-packages/streamlit/runtime/state/session_state.py", line 513, in _call_callbacks
+    self._new_widget_state.call_callback(wid)
+  File "/Users/isaacsoh/miniconda3/envs/hackathon/lib/python3.10/site-packages/streamlit/runtime/state/session_state.py", line 260, in call_callback
+    callback(*args, **kwargs)
+TypeError: 'bytes' object is not callable
+Exception in thread Thread-17 (target_fn):
+Traceback (most recent call last):
+  File "/Users/isaacsoh/miniconda3/envs/hackathon/lib/python3.10/threading.py", line 1016, in _bootstrap_inner
+    self.run()
+  File "/Users/isaacsoh/miniconda3/envs/hackathon/lib/python3.10/threading.py", line 953, in run
+    self._target(*self._args, **self._kwargs)
+  File "/Users/isaacsoh/miniconda3/envs/hackathon/lib/python3.10/site-packages/lightning/app/utilities/app_helpers.py", line 239, in target_fn
+    asyncio.run(update_fn())
+  File "/Users/isaacsoh/miniconda3/envs/hackathon/lib/python3.10/asyncio/runners.py", line 44, in run
+    return loop.run_until_complete(main)
+  File "/Users/isaacsoh/miniconda3/envs/hackathon/lib/python3.10/asyncio/base_events.py", line 649, in run_until_complete
+    return future.result()
+  File "/Users/isaacsoh/miniconda3/envs/hackathon/lib/python3.10/site-packages/lightning/app/utilities/app_helpers.py", line 215, in update_fn
+    sessions = list(runtime_instance._session_info_by_id.values())
+AttributeError: 'Runtime' object has no attribute '_session_info_by_id'
+2023-09-21 15:59:32.760 Uncaught app exception
+Traceback (most recent call last):
+  File "/Users/isaacsoh/miniconda3/envs/hackathon/lib/python3.10/site-packages/streamlit/runtime/scriptrunner/script_runner.py", line 537, in _run_script
+    self._session_state.on_script_will_rerun(rerun_data.widget_states)
+  File "/Users/isaacsoh/miniconda3/envs/hackathon/lib/python3.10/site-packages/streamlit/runtime/state/safe_session_state.py", line 68, in on_script_will_rerun
+    self._state.on_script_will_rerun(latest_widget_states)
+  File "/Users/isaacsoh/miniconda3/envs/hackathon/lib/python3.10/site-packages/streamlit/runtime/state/session_state.py", line 500, in on_script_will_rerun
+    self._call_callbacks()
+  File "/Users/isaacsoh/miniconda3/envs/hackathon/lib/python3.10/site-packages/streamlit/runtime/state/session_state.py", line 513, in _call_callbacks
+    self._new_widget_state.call_callback(wid)
+  File "/Users/isaacsoh/miniconda3/envs/hackathon/lib/python3.10/site-packages/streamlit/runtime/state/session_state.py", line 260, in call_callback
+    callback(*args, **kwargs)
+TypeError: 'bytes' object is not callable
+Exception in thread Thread-18 (target_fn):
+Traceback (most recent call last):
+  File "/Users/isaacsoh/miniconda3/envs/hackathon/lib/python3.10/threading.py", line 1016, in _bootstrap_inner
+    self.run()
+  File "/Users/isaacsoh/miniconda3/envs/hackathon/lib/python3.10/threading.py", line 953, in run
+    self._target(*self._args, **self._kwargs)
+  File "/Users/isaacsoh/miniconda3/envs/hackathon/lib/python3.10/site-packages/lightning/app/utilities/app_helpers.py", line 239, in target_fn
+    asyncio.run(update_fn())
+  File "/Users/isaacsoh/miniconda3/envs/hackathon/lib/python3.10/asyncio/runners.py", line 44, in run
+    return loop.run_until_complete(main)
+  File "/Users/isaacsoh/miniconda3/envs/hackathon/lib/python3.10/asyncio/base_events.py", line 649, in run_until_complete
+    return future.result()
+  File "/Users/isaacsoh/miniconda3/envs/hackathon/lib/python3.10/site-packages/lightning/app/utilities/app_helpers.py", line 215, in update_fn
+    sessions = list(runtime_instance._session_info_by_id.values())
+AttributeError: 'Runtime' object has no attribute '_session_info_by_id'
+2023-09-21 16:00:58.122 Uncaught app exception
+Traceback (most recent call last):
+  File "/Users/isaacsoh/miniconda3/envs/hackathon/lib/python3.10/pydoc.py", line 410, in importfile
+    return importlib._bootstrap._load(spec)
+  File "<frozen importlib._bootstrap>", line 719, in _load
+  File "<frozen importlib._bootstrap>", line 688, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 879, in exec_module
+  File "<frozen importlib._bootstrap_external>", line 1017, in get_code
+  File "<frozen importlib._bootstrap_external>", line 947, in source_to_code
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "/Users/isaacsoh/com/github/jeswan/prescient-llm-hackathon/app.py", line 23
+    if prediction is Not None:
+                         ^^^^
+SyntaxError: invalid syntax
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/isaacsoh/miniconda3/envs/hackathon/lib/python3.10/site-packages/streamlit/runtime/scriptrunner/script_runner.py", line 541, in _run_script
+    exec(code, module.__dict__)
+  File "/Users/isaacsoh/miniconda3/envs/hackathon/lib/python3.10/site-packages/lightning/app/frontend/streamlit_base.py", line 49, in <module>
+    _main()
+  File "/Users/isaacsoh/miniconda3/envs/hackathon/lib/python3.10/site-packages/lightning/app/frontend/streamlit_base.py", line 44, in _main
+    render_fn = _get_render_fn_from_environment()
+  File "/Users/isaacsoh/miniconda3/envs/hackathon/lib/python3.10/site-packages/lightning/app/frontend/streamlit_base.py", line 31, in _get_render_fn_from_environment
+    module = pydoc.importfile(render_fn_module_file)
+  File "/Users/isaacsoh/miniconda3/envs/hackathon/lib/python3.10/pydoc.py", line 412, in importfile
+    raise ErrorDuringImport(path, sys.exc_info())
+pydoc.ErrorDuringImport: problem in /Users/isaacsoh/com/github/jeswan/prescient-llm-hackathon/app.py - SyntaxError: invalid syntax (app.py, line 23)
+Exception in thread Thread-19 (target_fn):
+Traceback (most recent call last):
+  File "/Users/isaacsoh/miniconda3/envs/hackathon/lib/python3.10/threading.py", line 1016, in _bootstrap_inner
+    self.run()
+  File "/Users/isaacsoh/miniconda3/envs/hackathon/lib/python3.10/threading.py", line 953, in run
+    self._target(*self._args, **self._kwargs)
+  File "/Users/isaacsoh/miniconda3/envs/hackathon/lib/python3.10/site-packages/lightning/app/utilities/app_helpers.py", line 239, in target_fn
+    asyncio.run(update_fn())
+  File "/Users/isaacsoh/miniconda3/envs/hackathon/lib/python3.10/asyncio/runners.py", line 44, in run
+    return loop.run_until_complete(main)
+  File "/Users/isaacsoh/miniconda3/envs/hackathon/lib/python3.10/asyncio/base_events.py", line 649, in run_until_complete
+    return future.result()
+  File "/Users/isaacsoh/miniconda3/envs/hackathon/lib/python3.10/site-packages/lightning/app/utilities/app_helpers.py", line 215, in update_fn
+    sessions = list(runtime_instance._session_info_by_id.values())
+AttributeError: 'Runtime' object has no attribute '_session_info_by_id'
+Exception in thread Thread-20 (target_fn):
+Traceback (most recent call last):
+  File "/Users/isaacsoh/miniconda3/envs/hackathon/lib/python3.10/threading.py", line 1016, in _bootstrap_inner
+    self.run()
+  File "/Users/isaacsoh/miniconda3/envs/hackathon/lib/python3.10/threading.py", line 953, in run
+    self._target(*self._args, **self._kwargs)
+  File "/Users/isaacsoh/miniconda3/envs/hackathon/lib/python3.10/site-packages/lightning/app/utilities/app_helpers.py", line 239, in target_fn
+    asyncio.run(update_fn())
+  File "/Users/isaacsoh/miniconda3/envs/hackathon/lib/python3.10/asyncio/runners.py", line 44, in run
+    return loop.run_until_complete(main)
+  File "/Users/isaacsoh/miniconda3/envs/hackathon/lib/python3.10/asyncio/base_events.py", line 649, in run_until_complete
+    return future.result()
+  File "/Users/isaacsoh/miniconda3/envs/hackathon/lib/python3.10/site-packages/lightning/app/utilities/app_helpers.py", line 215, in update_fn
+    sessions = list(runtime_instance._session_info_by_id.values())
+AttributeError: 'Runtime' object has no attribute '_session_info_by_id'
+Exception in thread Thread-21 (target_fn):
+Traceback (most recent call last):
+  File "/Users/isaacsoh/miniconda3/envs/hackathon/lib/python3.10/threading.py", line 1016, in _bootstrap_inner
+    self.run()
+  File "/Users/isaacsoh/miniconda3/envs/hackathon/lib/python3.10/threading.py", line 953, in run
+    self._target(*self._args, **self._kwargs)
+  File "/Users/isaacsoh/miniconda3/envs/hackathon/lib/python3.10/site-packages/lightning/app/utilities/app_helpers.py", line 239, in target_fn
+    asyncio.run(update_fn())
+  File "/Users/isaacsoh/miniconda3/envs/hackathon/lib/python3.10/asyncio/runners.py", line 44, in run
+    return loop.run_until_complete(main)
+  File "/Users/isaacsoh/miniconda3/envs/hackathon/lib/python3.10/asyncio/base_events.py", line 649, in run_until_complete
+    return future.result()
+  File "/Users/isaacsoh/miniconda3/envs/hackathon/lib/python3.10/site-packages/lightning/app/utilities/app_helpers.py", line 215, in update_fn
+    sessions = list(runtime_instance._session_info_by_id.values())
+AttributeError: 'Runtime' object has no attribute '_session_info_by_id'
+Exception in thread Thread-22 (target_fn):
+Traceback (most recent call last):
+  File "/Users/isaacsoh/miniconda3/envs/hackathon/lib/python3.10/threading.py", line 1016, in _bootstrap_inner
+    self.run()
+  File "/Users/isaacsoh/miniconda3/envs/hackathon/lib/python3.10/threading.py", line 953, in run
+    self._target(*self._args, **self._kwargs)
+  File "/Users/isaacsoh/miniconda3/envs/hackathon/lib/python3.10/site-packages/lightning/app/utilities/app_helpers.py", line 239, in target_fn
+    asyncio.run(update_fn())
+  File "/Users/isaacsoh/miniconda3/envs/hackathon/lib/python3.10/asyncio/runners.py", line 44, in run
+    return loop.run_until_complete(main)
+  File "/Users/isaacsoh/miniconda3/envs/hackathon/lib/python3.10/asyncio/base_events.py", line 649, in run_until_complete
+    return future.result()
+  File "/Users/isaacsoh/miniconda3/envs/hackathon/lib/python3.10/site-packages/lightning/app/utilities/app_helpers.py", line 215, in update_fn
+    sessions = list(runtime_instance._session_info_by_id.values())
+AttributeError: 'Runtime' object has no attribute '_session_info_by_id'
+Exception in thread Thread-23 (target_fn):
+Traceback (most recent call last):
+  File "/Users/isaacsoh/miniconda3/envs/hackathon/lib/python3.10/threading.py", line 1016, in _bootstrap_inner
+    self.run()
+  File "/Users/isaacsoh/miniconda3/envs/hackathon/lib/python3.10/threading.py", line 953, in run
+    self._target(*self._args, **self._kwargs)
+  File "/Users/isaacsoh/miniconda3/envs/hackathon/lib/python3.10/site-packages/lightning/app/utilities/app_helpers.py", line 239, in target_fn
+    asyncio.run(update_fn())
+  File "/Users/isaacsoh/miniconda3/envs/hackathon/lib/python3.10/asyncio/runners.py", line 44, in run
+    return loop.run_until_complete(main)
+  File "/Users/isaacsoh/miniconda3/envs/hackathon/lib/python3.10/asyncio/base_events.py", line 649, in run_until_complete
+    return future.result()
+  File "/Users/isaacsoh/miniconda3/envs/hackathon/lib/python3.10/site-packages/lightning/app/utilities/app_helpers.py", line 215, in update_fn
+    sessions = list(runtime_instance._session_info_by_id.values())
+AttributeError: 'Runtime' object has no attribute '_session_info_by_id'
+Exception in thread Thread-24 (target_fn):
+Traceback (most recent call last):
+  File "/Users/isaacsoh/miniconda3/envs/hackathon/lib/python3.10/threading.py", line 1016, in _bootstrap_inner
+    self.run()
+  File "/Users/isaacsoh/miniconda3/envs/hackathon/lib/python3.10/threading.py", line 953, in run
+    self._target(*self._args, **self._kwargs)
+  File "/Users/isaacsoh/miniconda3/envs/hackathon/lib/python3.10/site-packages/lightning/app/utilities/app_helpers.py", line 239, in target_fn
+    asyncio.run(update_fn())
+  File "/Users/isaacsoh/miniconda3/envs/hackathon/lib/python3.10/asyncio/runners.py", line 44, in run
+    return loop.run_until_complete(main)
+  File "/Users/isaacsoh/miniconda3/envs/hackathon/lib/python3.10/asyncio/base_events.py", line 649, in run_until_complete
+    return future.result()
+  File "/Users/isaacsoh/miniconda3/envs/hackathon/lib/python3.10/site-packages/lightning/app/utilities/app_helpers.py", line 215, in update_fn
+    sessions = list(runtime_instance._session_info_by_id.values())
+AttributeError: 'Runtime' object has no attribute '_session_info_by_id'
+Exception in thread Thread-25 (target_fn):
+Traceback (most recent call last):
+  File "/Users/isaacsoh/miniconda3/envs/hackathon/lib/python3.10/threading.py", line 1016, in _bootstrap_inner
+    self.run()
+  File "/Users/isaacsoh/miniconda3/envs/hackathon/lib/python3.10/threading.py", line 953, in run
+    self._target(*self._args, **self._kwargs)
+  File "/Users/isaacsoh/miniconda3/envs/hackathon/lib/python3.10/site-packages/lightning/app/utilities/app_helpers.py", line 239, in target_fn
+    asyncio.run(update_fn())
+  File "/Users/isaacsoh/miniconda3/envs/hackathon/lib/python3.10/asyncio/runners.py", line 44, in run
+    return loop.run_until_complete(main)
+  File "/Users/isaacsoh/miniconda3/envs/hackathon/lib/python3.10/asyncio/base_events.py", line 649, in run_until_complete
+    return future.result()
+  File "/Users/isaacsoh/miniconda3/envs/hackathon/lib/python3.10/site-packages/lightning/app/utilities/app_helpers.py", line 215, in update_fn
+    sessions = list(runtime_instance._session_info_by_id.values())
+AttributeError: 'Runtime' object has no attribute '_session_info_by_id'
+Exception in thread Thread-26 (target_fn):
+Traceback (most recent call last):
+  File "/Users/isaacsoh/miniconda3/envs/hackathon/lib/python3.10/threading.py", line 1016, in _bootstrap_inner
+    self.run()
+  File "/Users/isaacsoh/miniconda3/envs/hackathon/lib/python3.10/threading.py", line 953, in run
+    self._target(*self._args, **self._kwargs)
+  File "/Users/isaacsoh/miniconda3/envs/hackathon/lib/python3.10/site-packages/lightning/app/utilities/app_helpers.py", line 239, in target_fn
+    asyncio.run(update_fn())
+  File "/Users/isaacsoh/miniconda3/envs/hackathon/lib/python3.10/asyncio/runners.py", line 44, in run
+    return loop.run_until_complete(main)
+  File "/Users/isaacsoh/miniconda3/envs/hackathon/lib/python3.10/asyncio/base_events.py", line 649, in run_until_complete
+    return future.result()
+  File "/Users/isaacsoh/miniconda3/envs/hackathon/lib/python3.10/site-packages/lightning/app/utilities/app_helpers.py", line 215, in update_fn
+    sessions = list(runtime_instance._session_info_by_id.values())
+AttributeError: 'Runtime' object has no attribute '_session_info_by_id'
+Exception in thread Thread-27 (target_fn):
+Traceback (most recent call last):
+  File "/Users/isaacsoh/miniconda3/envs/hackathon/lib/python3.10/threading.py", line 1016, in _bootstrap_inner
+    self.run()
+  File "/Users/isaacsoh/miniconda3/envs/hackathon/lib/python3.10/threading.py", line 953, in run
+    self._target(*self._args, **self._kwargs)
+  File "/Users/isaacsoh/miniconda3/envs/hackathon/lib/python3.10/site-packages/lightning/app/utilities/app_helpers.py", line 239, in target_fn
+    asyncio.run(update_fn())
+  File "/Users/isaacsoh/miniconda3/envs/hackathon/lib/python3.10/asyncio/runners.py", line 44, in run
+    return loop.run_until_complete(main)
+  File "/Users/isaacsoh/miniconda3/envs/hackathon/lib/python3.10/asyncio/base_events.py", line 649, in run_until_complete
+    return future.result()
+  File "/Users/isaacsoh/miniconda3/envs/hackathon/lib/python3.10/site-packages/lightning/app/utilities/app_helpers.py", line 215, in update_fn
+    sessions = list(runtime_instance._session_info_by_id.values())
+AttributeError: 'Runtime' object has no attribute '_session_info_by_id'
+Exception in thread Thread-28 (target_fn):
+Traceback (most recent call last):
+  File "/Users/isaacsoh/miniconda3/envs/hackathon/lib/python3.10/threading.py", line 1016, in _bootstrap_inner
+    self.run()
+  File "/Users/isaacsoh/miniconda3/envs/hackathon/lib/python3.10/threading.py", line 953, in run
+    self._target(*self._args, **self._kwargs)
+  File "/Users/isaacsoh/miniconda3/envs/hackathon/lib/python3.10/site-packages/lightning/app/utilities/app_helpers.py", line 239, in target_fn
+    asyncio.run(update_fn())
+  File "/Users/isaacsoh/miniconda3/envs/hackathon/lib/python3.10/asyncio/runners.py", line 44, in run
+    return loop.run_until_complete(main)
+  File "/Users/isaacsoh/miniconda3/envs/hackathon/lib/python3.10/asyncio/base_events.py", line 649, in run_until_complete
+    return future.result()
+  File "/Users/isaacsoh/miniconda3/envs/hackathon/lib/python3.10/site-packages/lightning/app/utilities/app_helpers.py", line 215, in update_fn
+    sessions = list(runtime_instance._session_info_by_id.values())
+AttributeError: 'Runtime' object has no attribute '_session_info_by_id'
+Exception in thread Thread-29 (target_fn):
+Traceback (most recent call last):
+  File "/Users/isaacsoh/miniconda3/envs/hackathon/lib/python3.10/threading.py", line 1016, in _bootstrap_inner
+    self.run()
+  File "/Users/isaacsoh/miniconda3/envs/hackathon/lib/python3.10/threading.py", line 953, in run
+    self._target(*self._args, **self._kwargs)
+  File "/Users/isaacsoh/miniconda3/envs/hackathon/lib/python3.10/site-packages/lightning/app/utilities/app_helpers.py", line 239, in target_fn
+    asyncio.run(update_fn())
+  File "/Users/isaacsoh/miniconda3/envs/hackathon/lib/python3.10/asyncio/runners.py", line 44, in run
+    return loop.run_until_complete(main)
+  File "/Users/isaacsoh/miniconda3/envs/hackathon/lib/python3.10/asyncio/base_events.py", line 649, in run_until_complete
+    return future.result()
+  File "/Users/isaacsoh/miniconda3/envs/hackathon/lib/python3.10/site-packages/lightning/app/utilities/app_helpers.py", line 215, in update_fn
+    sessions = list(runtime_instance._session_info_by_id.values())
+AttributeError: 'Runtime' object has no attribute '_session_info_by_id'
