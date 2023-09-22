@@ -1,9 +1,11 @@
 import pytest
 import torch
-from src.multimodal_llm.data.dataloaders.scicap import SciCapDataset # Assuming the code snippet is in test_sample.py
+from src.multimodal_llm.data.scicap import SciCapDataModule, SciCapDataset # Assuming the code snippet is in test_sample.py
 from torch.utils.data import Dataset, DataLoader
 from torchvision import transforms
 from tqdm import tqdm 
+import pytest
+import shutil
 
 # Define some image transformations
 image_transform = transforms.Compose([
@@ -38,7 +40,7 @@ def test_scicap_dataset(root_dir, split, expected_len):
         # Assert that the image shape is (3, 224, 224)
         # assert image.shape == (3, 224, 224)
         # Assert that the caption is a str
-        assert isinstance(caption, str)
+        assert isinstance(caption, list)
 
 @pytest.mark.parametrize("root_dir, split, expected_len", test_cases)
 def test_scicap_dataloader(root_dir, split, expected_len):
@@ -46,5 +48,27 @@ def test_scicap_dataloader(root_dir, split, expected_len):
     scicap_dataloader = DataLoader(scicap_dataset, batch_size=32, shuffle=True, num_workers=0)
     
     for batch in tqdm(scicap_dataloader):
-        breakpoint()
+        assert batch
+        break
 
+
+@pytest.fixture()
+def data_module(tmpdir):
+    data_dir = tmpdir.mkdir("scicap")
+    dm = SciCapDataModule(root_dir=data_dir)
+    dm.prepare_data()
+    dm.setup()
+    return dm
+
+
+def test_data_module(data_module):
+    assert data_module.train_dataset is not None
+    assert data_module.val_dataset is not None
+    assert data_module.test_dataset is not None
+    assert isinstance(data_module.train_dataloader(), DataLoader)
+    assert isinstance(data_module.val_dataloader(), DataLoader)
+    assert isinstance(data_module.test_dataloader(), DataLoader)
+
+
+def test_data_module_cleanup(data_module, tmpdir):
+    shutil.rmtree(str(tmpdir))

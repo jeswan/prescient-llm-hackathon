@@ -1,0 +1,18 @@
+lightning_data_module:
+  _target_: src.multimodal_llm.data.mnist.MNISTDataModule
+  data_dir: data/
+  batch_size: 32
+
+lightning_module:
+  _target_: sample_project.models.basic_model.BasicModel
+  input_size: 784
+  hidden_size: 128
+  output_size: 10
+  learning_rate: 0.01
+
+trainer:
+  _target_: pytorch_lightning.Trainer
+  max_epochs: 1
+
+tasks:
+  - fit

@@ -1,0 +1,7 @@
+hydra
+lightning
+tqdm
+wget
+transformers
+
+isort
