@@ -24,8 +24,13 @@ FlashAttention2Available = RequirementCache("flash-attn>=2.0.0.post1")
 
 
 class GPT(nn.Module):
-    def __init__(self, config: Config) -> None:
+    def __init__(self, config: Config = None) -> None:
         super().__init__()
+
+        if config is None:
+            config  = Config.from_name("tiny_LLaMA_1b")
+
+
         assert config.padded_vocab_size is not None
         self.config = config
 
