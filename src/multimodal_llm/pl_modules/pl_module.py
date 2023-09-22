@@ -1,7 +1,7 @@
-from lightning import LightningModule
+import pytorch_lightning as pl
 
 
-class BasicLightningModule(LightningModule):
+class BasicLightningModule(pl.LightningModule):
     def __init__(self, model, loss_fn, optimizer_cls):
         super().__init__()
         self.model = model

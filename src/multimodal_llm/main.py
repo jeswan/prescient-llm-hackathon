@@ -2,7 +2,7 @@ import hydra
 from omegaconf import DictConfig
 
 
-@hydra.main(version_base=None, config_path="", config_name="config")
+@hydra.main(version_base=None, config_path="./configs", config_name="config")
 def main(cfg: DictConfig):
     lightning_data_module = hydra.utils.instantiate(cfg.lightning_data_module)
     lightning_module = hydra.utils.instantiate(cfg.lightning_module)
