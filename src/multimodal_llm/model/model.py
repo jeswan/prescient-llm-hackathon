@@ -11,7 +11,7 @@ import torch.nn as nn
 from lightning_utilities.core.imports import RequirementCache
 from typing_extensions import Self
 # from flash_attn import flash_attn_func
-
+from transformers import ViTImageProcessor, ViTForImageClassification
 from xformers.ops import SwiGLU
 
 from .config import Config

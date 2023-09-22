@@ -3,7 +3,7 @@
 import math
 from typing import Optional, Tuple
 
-import rotary_emb
+import rotary_embedding_torch
 import torch
 from einops import rearrange, repeat
 
@@ -36,7 +36,7 @@ class ApplyRotaryEmb(torch.autograd.Function):
                 if not interleaved
                 else (out_ro[..., ::2], out_ro[..., 1::2])
             )
-        rotary_emb.apply_rotary(
+        rotary_embedding_torch.apply_rotary(
             x1,
             x2,
             rearrange(cos[:seqlen], "s d -> s 1 d"),
@@ -73,7 +73,7 @@ class ApplyRotaryEmb(torch.autograd.Function):
                 if not ctx.interleaved
                 else (dx_ro[..., ::2], dx_ro[..., 1::2])
             )
-        rotary_emb.apply_rotary(
+        rotary_embedding_torch.apply_rotary(
             do1,
             do2,
             rearrange(cos[:seqlen], "s d -> s 1 d"),

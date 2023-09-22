@@ -90,7 +90,7 @@ class Config:
 
             return RMSNorm
         elif self._norm_class == "FusedRMSNorm":
-            from lit_gpt.rmsnorm import FusedRMSNorm
+            from .rmsnorm import FusedRMSNorm
             return FusedRMSNorm
         return getattr(torch.nn, self._norm_class)
 
