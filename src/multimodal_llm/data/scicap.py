@@ -14,8 +14,9 @@ import wget
 from transformers import AutoTokenizer
 
 LLAMA_CONTEXT_LENGTH = 2048
-IMAGE_CONTEXT_LENGTH=196
+IMAGE_CONTEXT_LENGTH = 196
 TEXT_CONTEXT_LENGTH = LLAMA_CONTEXT_LENGTH - IMAGE_CONTEXT_LENGTH
+IGNORE_INDEX = -100
 
 
 class SciCapDataset(Dataset):
@@ -40,12 +41,17 @@ class SciCapDataset(Dataset):
 
         caption_fn = image_name.replace("SciCap-No-Subfig-Img", "SciCap-Caption-All").replace(".png", ".json")
         caption = json.load(open(caption_fn))["0-originally-extracted"]
+        caption = f' --> This can be described as follows: \n{caption}</s>'  # make it a prompt, assuming image features will be prepended.
 
         image_tensor = inputs['pixel_values'].squeeze(0)  # (1, 3, 224, 224) -> (3, 224, 224)
-        text_token_ids = self.tokenizer.encode(caption, pad_to_max_length=True, max_length=TEXT_CONTEXT_LENGTH).ids  # list of ints
+        text_token_ids = self.tokenizer.encode(caption, pad_to_max_length=True, max_length=TEXT_CONTEXT_LENGTH + 1).ids  # list of ints
 
-        return {"image" : image_tensor,
-                "text" : text_token_ids,}
+        input_text_ids = text_token_ids[:-1]  # image feature + input_text_ids --> input of autoregressive model
+        target_text_ids = [IGNORE_INDEX] * IMAGE_CONTEXT_LENGTH + text_token_ids[1:]  # --> target of autoregressive model
+
+        return {"image_tensor" : image_tensor,
+                "input_text_ids": input_text_ids,
+                "target_text_ids": target_text_ids,}
 
     def __len__(self):
         # Return the size of the dataset
