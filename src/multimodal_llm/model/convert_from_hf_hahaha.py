@@ -164,12 +164,13 @@ if __name__ == "__main__":
     # args.add_argument("--model_size", type=str, default="7B")
 
     args.add_argument(
-        "--hf_model_path", type=str, required=True, help="Path to the converted HF model, or model name."
+        "--hf_model_path", type=str, required=True, help="Path to the converted HF model, or model name.",
+        default="PY007/TinyLlama-1.1B-Chat-v0.1"
     )
     args.add_argument(
         "--torch_ckpt_path",
         type=str,
-        default=None,
+        default="TinyLlama-torchckpt.pt",
         help="Path to torch model state_dict file (.pt). To be used by Prescient-LM users.",
     )
     # args.add_argument(
