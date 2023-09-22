@@ -1,5 +1,3 @@
-# app.py
-
 import lightning as L
 import lightning.app.frontend as frontend
 import streamlit as st
