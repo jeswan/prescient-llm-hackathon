@@ -49,7 +49,7 @@ class SciCapDataset(Dataset):
         input_text_ids = text_token_ids[:-1]  # image feature + input_text_ids --> input of autoregressive model
         target_text_ids = [IGNORE_INDEX] * IMAGE_CONTEXT_LENGTH + text_token_ids[1:]  # --> target of autoregressive model
 
-        return {"image" : image_tensor,
+        return {"image_tensor" : image_tensor,
                 "input_text_ids": input_text_ids,
                 "target_text_ids": target_text_ids,}
 
