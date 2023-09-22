@@ -16,3 +16,4 @@ _skbuild
 build
 cmake-build-debug
 docs/_build
+.storage
