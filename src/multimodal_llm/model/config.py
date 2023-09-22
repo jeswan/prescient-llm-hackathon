@@ -7,6 +7,8 @@ from typing_extensions import Self
 # import lit_gpt.model
 from .utils import find_multiple
 
+import multimodal_llm
+
 
 @dataclass
 class Config:
@@ -77,10 +79,10 @@ class Config:
         conf_dict.update(kwargs)
         return cls(**conf_dict)
 
-    # @property
-    # def mlp_class(self) -> Type:
-    #     # `self._mlp_class` cannot be the type to keep the config json serializable
-    #     return getattr(lit_gpt.model, self._mlp_class)
+    @property
+    def mlp_class(self) -> Type:
+        # `self._mlp_class` cannot be the type to keep the config json serializable
+        return getattr(multimodal_llm.model.model, self._mlp_class)
 
     @property
     def norm_class(self) -> Type:

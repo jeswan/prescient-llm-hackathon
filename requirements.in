@@ -19,6 +19,7 @@ evaluate==0.4.0
 scikit-learn==1.2.2
 sentencepiece==0.1.99
 wandb==0.15.3
+rotary_embedding_torch
 # other optional dependencies are
 # sentencepiece  # pythia, falcon, redpajama
 # tokenizers  #  llama-based models

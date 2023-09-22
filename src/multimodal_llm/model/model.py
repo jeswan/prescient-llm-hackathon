@@ -17,6 +17,7 @@ from xformers.ops import SwiGLU
 from .config import Config
 from .fused_rotary_embedding import apply_rotary_emb_func
 
+
 RoPECache = Tuple[torch.Tensor, torch.Tensor]
 KVCache = Tuple[torch.Tensor, torch.Tensor]
 FlashAttention2Available = RequirementCache("flash-attn>=2.0.0.post1")
@@ -108,10 +109,11 @@ class GPT(nn.Module):
         # forward the model itself
 
         x1 = self.transformer.wte(idx)  # token embeddings of shape (b, t, n_embd)
-        x2 = self.transformer.vit(img)  # image embeddings of shape  [N, 768]
-        x2 = self.transformer.linear(x2) # shape [N, n_emb ]
+        
+        x2 = self.transformer.vit(img)  # image embeddings of shape  [N, 196, 768]
+        x2 = self.transformer.linear(x2) # shape [N, 196, n_emb]
 
-        x = torch.cat([x1, x2])
+        x = torch.cat([x1, x2], dim=1)
 
         if not use_kv_cache:
             for block in self.transformer.h:
@@ -216,9 +218,8 @@ class ViT(nn.Module):
         # out = self.patch_embeddings(pixel_values = x.unsqueeze(0))
         out = self.model(**x, output_hidden_states=True)
 
-        last_hidden_state = out.hidden_states[-1] 
-        image_embeddings = last_hidden_state[0, 1:, :]  # shape = [N, 196, 768]
-        mean_pooled = image_embeddings.mean(dim=0)      # shape = [N, 768]
+        last_hidden_state = out.hidden_states[-1]        # take the last layer out of 13 layers
+        image_embeddings = last_hidden_state[:, :-1, :]  # shape = [N, 196, 768]
 
         return mean_pooled
 
