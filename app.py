@@ -14,14 +14,12 @@ def your_streamlit_app(lightning_app_state):
     if image is not None:
         st.image(image)
 
-        question = st.text_area("Question")
-
-        clicked = st.button("Ask")
+        clicked = st.button("Generate Caption")
 
         if clicked:
             # make request with (question, image)
 
-            answer = "foo"
+            answer = "This is an image of a dock surrounded by water."
 
             st.markdown(answer)
 
