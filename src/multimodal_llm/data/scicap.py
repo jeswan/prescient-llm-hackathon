@@ -41,7 +41,11 @@ class SciCapDataset(Dataset):
         caption_fn = image_name.replace("SciCap-No-Subfig-Img", "SciCap-Caption-All").replace(".png", ".json")
         caption = json.load(open(caption_fn))["0-originally-extracted"]
 
-        return {"image": inputs['pixel_values'].squeeze(0), "text": self.tokenizer.encode(caption, pad_to_max_length=True, max_length=TEXT_CONTEXT_LENGTH)}
+        image_tensor = inputs['pixel_values'].squeeze(0)  # (1, 3, 224, 224) -> (3, 224, 224)
+        text_token_ids = self.tokenizer.encode(caption, pad_to_max_length=True, max_length=TEXT_CONTEXT_LENGTH).ids  # list of ints
+
+        return {"image" : image_tensor,
+                "text" : text_token_ids,}
 
     def __len__(self):
         # Return the size of the dataset
