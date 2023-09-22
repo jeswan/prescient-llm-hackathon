@@ -7,7 +7,6 @@ lightning_data_module:
 lightning_module:
   _target_: src.multimodal_llm.pl_modules.pl_module.BasicLightningModule
   optimizer_cls: torch.optim.AdamW
-  model: null
   loss_fn: 
     _target_: torch.nn.CrossEntropyLoss
   
