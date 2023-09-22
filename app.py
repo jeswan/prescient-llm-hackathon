@@ -4,7 +4,7 @@ import streamlit as st
 
 
 def your_streamlit_app(lightning_app_state):
-    st.header("LLM Hacakathon", divider="rainbow")
+    st.header("Prescient Multi-Modal LM", divider="rainbow")
 
     image = st.file_uploader(
         label="Upload an image below to recieve a text description",
