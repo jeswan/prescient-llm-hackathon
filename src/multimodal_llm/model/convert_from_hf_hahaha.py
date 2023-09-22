@@ -10,6 +10,10 @@ import torch
 import einops  # necessary for conversion  # noqa: F401
 from transformers import LlamaForCausalLM
 
+from multimodal_llm.data.scicap import SciCapDataModule
+from multimodal_llm.model.model import GPT, LLaMAMLP
+from multimodal_llm.model.config import Config
+
 
 try:
     import accelerate  # necessary for conversion  # noqa: F401
@@ -20,9 +24,10 @@ logger = logging.getLogger(__name__)
 
 
 def _permute_hf_to_litllama(w, n_embd, n_head, dtype):
-    dim = n_embd
-    w = w.type(dtype)
-    return w.view(n_head, 2, dim // n_head // 2, dim).transpose(1, 2).reshape(dim, dim)
+    # dim = n_embd
+    # w = w.type(dtype)
+    # return w.view(n_head, 2, dim // n_head // 2, dim).transpose(1, 2).reshape(dim, dim)
+    return w
 
 
 def _main_wrapper(
@@ -59,8 +64,8 @@ def main_convert(
         Whether to verify the conversion by loading the model and running a forward pass.
 
     """
-    if not os.path.exists(torch_ckpt_path):
-        raise ValueError(f"output torch_ckpt_path {torch_ckpt_path} does not exist")
+    # if not os.path.exists(torch_ckpt_path):
+    #     raise ValueError(f"output torch_ckpt_path {torch_ckpt_path} does not exist")
 
     dt = getattr(torch, dtype, None)
     if not isinstance(dt, torch.dtype):
@@ -81,6 +86,10 @@ def main_convert(
 
     # config = LitLLaMAConfig.from_name(model_size)
     # torch_model = LLaMA(config)
+
+    config = Config.from_name("tiny_LLaMA_1b")
+    torch_model = GPT(config=config)
+
 
     # n_layers = config.n_layer
     n_layers = 22
@@ -125,12 +134,12 @@ def main_convert(
     new_state_dict.update(
         {
             "transformer.wte.weight": loaded["model.embed_tokens.weight"],
-            "transformer.ln_f.scale": loaded["model.norm.weight"],
+            "transformer.ln_f.weight": loaded["model.norm.weight"],
             "lm_head.weight": loaded["lm_head.weight"],
         }
     )
     logger.info("Conversion: Done. Loading the new state_dict to the torch model..")
-    # torch_model.load_state_dict(new_state_dict, strict=True)
+    torch_model.load_state_dict(new_state_dict, strict=False)
     #
     # if verify:
     #     logger.info("Verification: Comparing output tokens of litllama and huggingface.")
@@ -151,11 +160,12 @@ def main_convert(
     #     ), "The outputs of the models are not the same."
     #     logger.info("Verification: Done. ")
     #
-    # logger.info("Saving...")
-    # torch.save(
-    #     torch_model.state_dict(),
-    #     os.path.join(torch_ckpt_path, f"{model_size}-torch.state_dict.ckpt"),
-    # )
+    logger.info("Saving...")
+    torch.save(
+        torch_model.state_dict(),
+        f"torch.state_dict.ckpt",
+    )
+    
     logger.info(f"Saved at {torch_ckpt_path}. Mahalo!")
 
 
@@ -164,7 +174,7 @@ if __name__ == "__main__":
     # args.add_argument("--model_size", type=str, default="7B")
 
     args.add_argument(
-        "--hf_model_path", type=str, required=True, help="Path to the converted HF model, or model name.",
+        "--hf_model_path", type=str, required=False, help="Path to the converted HF model, or model name.",
         default="PY007/TinyLlama-1.1B-Chat-v0.1"
     )
     args.add_argument(

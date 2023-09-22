@@ -30,11 +30,10 @@ class GPT(nn.Module):
         if config is None:
             config  = Config.from_name("tiny_LLaMA_1b")
 
-
         assert config.padded_vocab_size is not None
         self.config = config
 
-        self.lm_head = nn.Linear(config.n_embd, config.padded_vocab_size, bias=False)
+        self.lm_head = nn.Linear(config.n_embd, config.padded_vocab_size , bias=False)
         self.transformer = nn.ModuleDict(
             dict(
                 wte=nn.Embedding(config.padded_vocab_size, config.n_embd),
@@ -221,12 +220,12 @@ class ViT(nn.Module):
         """
         
         # out = self.patch_embeddings(pixel_values = x.unsqueeze(0))
-        out = self.model(**x, output_hidden_states=True)
+        out = self.model(pixel_values=x, output_hidden_states=True)
 
         last_hidden_state = out.hidden_states[-1]        # take the last layer out of 13 layers
         image_embeddings = last_hidden_state[:, :-1, :]  # shape = [N, 196, 768]
 
-        return mean_pooled
+        return image_embeddings
 
 
 

@@ -44,14 +44,14 @@ class SciCapDataset(Dataset):
         caption = f' --> This can be described as follows: \n{caption}</s>'  # make it a prompt, assuming image features will be prepended.
 
         image_tensor = inputs['pixel_values'].squeeze(0)  # (1, 3, 224, 224) -> (3, 224, 224)
-        text_token_ids = self.tokenizer.encode(caption, pad_to_max_length=True, max_length=TEXT_CONTEXT_LENGTH + 1).ids  # list of ints
+        text_token_ids = self.tokenizer.encode(caption, pad_to_max_length=True, max_length=TEXT_CONTEXT_LENGTH + 1)  # list of ints
 
         input_text_ids = text_token_ids[:-1]  # image feature + input_text_ids --> input of autoregressive model
         target_text_ids = [IGNORE_INDEX] * IMAGE_CONTEXT_LENGTH + text_token_ids[1:]  # --> target of autoregressive model
 
         return {"image_tensor" : image_tensor,
-                "input_text_ids": input_text_ids,
-                "target_text_ids": target_text_ids,}
+                "input_text_ids": torch.tensor(input_text_ids, dtype=torch.long),
+                "target_text_ids": torch.tensor(target_text_ids, dtype=torch.long)}
 
     def __len__(self):
         # Return the size of the dataset
@@ -74,7 +74,8 @@ class SciCapDataModule(pl.LightningDataModule):
             print(f'Downloading dataset from {url}...')
             wget.download(url, zip_path)
 
-        if not os.path.isdir(os.path.join(self.root_dir, 'SciCap-No-Subfig-Img')):
+        #  #not os.path.isdir(os.path.join(self.root_dir, 'SciCap-No-Subfig-Img')):
+        if False:
             print(f'Extracting dataset to {self.root_dir}...')
             with zipfile.ZipFile(zip_path, 'r') as f:
                 f.extractall(self.root_dir)
